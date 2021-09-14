@@ -23,15 +23,29 @@ def PnfRegToDmp(request):
             d = data.json()
             j = json.loads(d[0])
             getMsg = 0
+            userName = j['event']['pnfRegistrationFields']['additionalFields']['username']
+            port = j['event']['pnfRegistrationFields']['additionalFields']['oamPort']
+            serverIp = j['event']['pnfRegistrationFields']['oamV4IpAddress']
         except (IndexError,KeyError):
             getMsg = 1
-    userName = j['event']['pnfRegistrationFields']['additionalFields']['username']
-    port = j['event']['pnfRegistrationFields']['additionalFields']['oamPort']
-    serverIp = j['event']['pnfRegistrationFields']['oamV4IpAddress']
     #        getMsg = 0
     #    except:
     #        getMsg = 1
-    return JsonResponse({'userName':userName, 'port':port, 'serverIp':serverIp})
+    #status = RegToONOS(userName, port, serverIp)
+    payload = '{"devices": {"netconf:' + serverIp + ':830' + '": {"netconf": {"ip": "' + serverIp + '","port": 830,"username":"' + userName + '","password": "netconf!"},"basic": {"driver": "ovs-netconf"}}}}'
+    #send = payload.json()
+    url = 'http://192.168.0.127:8181/onos/v1/network/configuration'
+    r = requests.post(url, data=payload, auth=('onos', 'rocks'))
+
+    return HttpResponse(r.status_code)
+    #return JsonResponse({'userName':userName, 'port':port, 'serverIp':serverIp})
+
+#def RegToONOS(username, port, ip):
+    #"{\"devices\": {\"netconf:%s\": {\"netconf\": {\"ip\": \"%s\",\"port\": 830,\"username\":\"netconf\",\"password\": \"netconf!\"},\"basic\": {\"driver\": \"ovs-netconf\"}}}}"
+#    payload = '{"devices": {"netconf:' + ip + ':830' + '": {"netconf": {"ip": "' + ip '","port": 830,"username":"' + username + '","password": "netconf!"},"basic": {"driver": "ovs-netconf"}}}}'
+#    url = 'http://192.168.0.127:8181/onos/v1/network/configuration'
+#    r = requests.post(url, data=payload)
+#    return 200
 
 def GetTest(request):
     getMsg = 1
