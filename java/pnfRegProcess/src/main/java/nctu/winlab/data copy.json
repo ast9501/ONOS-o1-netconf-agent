@@ -1,0 +1,54 @@
+[
+{
+    "event": {
+        "commonEventHeader": {
+            "sourceId": "",
+            "startEpochMicrosec": 1634378915033478,
+            "eventId": "EventType5G-0",
+            "timeZoneOffset": "+00:00",
+            "reportingEntityId": "",
+            "internalHeaderFields": {
+                "collectorTimeStamp": "Sat, 10 16 2021 10:08:35 UTC"
+            },
+            "priority": "Normal",
+            "version": "4.1",
+            "nfVendorName": "sdn",
+            "reportingEntityName": "O-RAN-O-DU-1",
+            "sequence": 0,
+            "domain": "pnfRegistration",
+            "lastEpochMicrosec": 1634378915033478,
+            "eventName": "EventType5G",
+            "vesEventListenerVersion": "7.2.1",
+            "sourceName": "O-RAN-O-DU-1",
+            "nfNamingCode": "sdn controller"
+        },
+        "pnfRegistrationFields": {
+            "serialNumber": "O-RAN-O-DU-1-172.21.0.4-830-Simulated Device Melacon",
+            "additionalFields": {
+                "protocol": "SSH",
+                "password": "netconf!",
+                "oamPort": "830",
+                "betweenAttemptsTimeout": "2000",
+                "keepaliveDelay": "120",
+                "sleep-factor": "1.5",
+                "reconnectOnChangedSchema": "false",
+                "connectionTimeout": "20000",
+                "maxConnectionAttempts": "100",
+                "username": "netconf",
+                "tcpOnly": "false"
+            },
+            "lastServiceDate": "2019-08-16",
+            "unitFamily": "Simulated Device",
+            "vendorName": "Melacon",
+            "oamV6IpAddress": "2001: db8: 1: 50: : 3",
+            "unitType": "O-RAN-sim",
+            "macAddress": "19: e1: 2a: a1: e2: d2",
+            "pnfRegistrationFieldsVersion": "2.0",
+            "manufactureDate": "2019-08-16",
+            "modelNumber": "Simulated Device Melacon",
+            "oamV4IpAddress": "172.21.0.4",
+            "softwareVersion": "2.3.5"        
+        }    
+    }
+}
+]
