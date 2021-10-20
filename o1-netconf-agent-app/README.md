@@ -28,10 +28,19 @@ OS name: "linux", version: "5.11.0-37-generic", arch: "amd64", family: "unix"
 Ubuntu 20.04
 ```
 
-## usage
-* install app
+## Usage
+* install and activate app
 ```
 onos-app localhost install! target/o1-netconf-agent-app-1.0-SNAPSHOT.oar
+```
+
+* deactivate app
+```
+onos localhost app deactivate nctu.winlab.app
+```
+* uninstall app (need to deactivate first!)
+```
+onos-app localhost uninstall nctu.winlab.app
 ```
 
 Some onos-app command:
@@ -53,7 +62,7 @@ onos-create-app
 mvn clean install -DskipTests
 ```
 
-## Feature log
+## Feature logs
 * Using external package, Jackson, for processing data with json format
 * Get "single" pnf device per PNF registration message from DMaaP
 * Fill in username, password, ip, port according to PNF registration message into payload used to register device on ONOS
